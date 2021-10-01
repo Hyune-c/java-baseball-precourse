@@ -1,6 +1,5 @@
 package config;
 
-
 public class Property {
 
 	public static final int NUMBER_SIZE = 3;

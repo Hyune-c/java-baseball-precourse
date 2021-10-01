@@ -20,7 +20,7 @@ public class BaseballGame {
 
 	private GameStatusType gameStatusType;
 
-	public BaseballGame(int numberSize) {
+	public BaseballGame(final int numberSize) {
 		this.inputService = new InputService(new ParseService());
 
 		this.computer = Computer.of(numberSize);
@@ -48,7 +48,7 @@ public class BaseballGame {
 	 */
 	private PlateAppearanceResult doBat() {
 		do {
-			List<Integer> inputNumberList = inputService.nextIntegerList(
+			final List<Integer> inputNumberList = inputService.nextIntegerList(
 				Message.ENTER_NUMBER.toString(), Property.NUMBER_SIZE);
 			user.updateNumberList(inputNumberList);
 		} while (!user.isValid());
@@ -77,7 +77,7 @@ public class BaseballGame {
 		}
 	}
 
-	private void updateGameStatus(GameStatusType newGameStatusType) {
+	private void updateGameStatus(final GameStatusType newGameStatusType) {
 		gameStatusType = newGameStatusType;
 	}
 

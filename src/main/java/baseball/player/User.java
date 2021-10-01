@@ -6,11 +6,11 @@ import config.Property;
 
 public class User extends Player {
 
-	protected User(List<Integer> numberList) {
+	protected User(final List<Integer> numberList) {
 		updateNumberList(numberList);
 	}
 
-	public static User of(List<Integer> numberList) {
+	public static User of(final List<Integer> numberList) {
 		return new User(numberList);
 	}
 

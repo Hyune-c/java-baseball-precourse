@@ -1,10 +1,5 @@
 package type;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
-@Getter
-@RequiredArgsConstructor
 public enum PitchingResultType {
 
 	STRIKE("스트라이크"),
@@ -14,9 +9,17 @@ public enum PitchingResultType {
 
 	private final String description;
 
-	public String generateMessage(int count) {
+	PitchingResultType(final String description) {
+		this.description = description;
+	}
+
+	public String generateMessage(final int count) {
 		return (count == 0)
 			? ""
-			: count + " " + this.getDescription() + " ";
+			: count + this.getDescription() + " ";
+	}
+
+	public String getDescription() {
+		return description;
 	}
 }

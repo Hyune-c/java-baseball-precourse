@@ -23,12 +23,12 @@ class ParseServiceTest {
 	@DisplayName("[성공] 정의된 길이로 parse")
 	@ParameterizedTest
 	@MethodSource("possibleParsedString")
-	public void success_parse(String input) {
+	void success_parse(final String input) {
 		// given
-		int size = 3;
+		final int size = 3;
 
 		// when
-		List<Integer> result = parseService.parse(input, size);
+		final List<Integer> result = parseService.parse(input, size);
 
 		// then
 		assertThat(result.size()).isGreaterThan(0);
@@ -41,9 +41,9 @@ class ParseServiceTest {
 	@DisplayName("[실패] 정의된 길이로 parse - 파싱할 수 없음")
 	@ParameterizedTest
 	@MethodSource("impossibleParsedString")
-	public void fail_parse_impossible(String input) {
+	void fail_parse_impossible(final String input) {
 		// given
-		int size = 3;
+		final int size = 3;
 
 		// when
 		assertThrows(NumberFormatException.class, () -> parseService.parse(input, size));
@@ -58,9 +58,9 @@ class ParseServiceTest {
 	@DisplayName("[실패] 정의된 길이로 parse - 맞지 않는 길이")
 	@ParameterizedTest
 	@MethodSource("IllegalLengthString")
-	public void fail_parse_illegalLength(String input) {
+	void fail_parse_illegalLength(final String input) {
 		// given
-		int size = 3;
+		final int size = 3;
 
 		// when
 		assertThrows(IllegalArgumentException.class, () -> parseService.parse(input, size));

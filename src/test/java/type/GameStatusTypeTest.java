@@ -11,34 +11,33 @@ import org.junit.jupiter.params.provider.MethodSource;
 class GameStatusTypeTest {
 
 	public static String[] validFlags() {
-		return new String[]{"1", "2"};
+		return new String[] {"1", "2"};
 	}
 
 	@DisplayName("[성공] flag 로 enum 찾기")
 	@ParameterizedTest
 	@MethodSource("validFlags")
-	public void success_findByFlag(String flagString) {
+	void success_findByFlag(final String flagString) {
 		// given
-		int flag = Integer.parseInt(flagString);
+		final int flag = Integer.parseInt(flagString);
 
 		// when
-		GameStatusType result = GameStatusType.findByFlag(flag);
+		final GameStatusType result = GameStatusType.findByFlag(flag);
 
 		// then
 		assertThat(result).isNotNull();
 	}
 
-
 	public static String[] inValidFlags() {
-		return new String[]{"0", "4", "5"};
+		return new String[] {"0", "4", "5"};
 	}
 
 	@DisplayName("[실패] flag 로 enum 찾기 - 적절하지 않은 flag")
 	@ParameterizedTest
 	@MethodSource("inValidFlags")
-	public void fail_findByFlag(String flagString) {
+	void fail_findByFlag(final String flagString) {
 		// given
-		int flag = Integer.parseInt(flagString);
+		final int flag = Integer.parseInt(flagString);
 
 		// when
 		assertThrows(IllegalArgumentException.class, () -> GameStatusType.findByFlag(flag));

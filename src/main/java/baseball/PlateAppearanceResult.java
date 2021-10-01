@@ -13,15 +13,15 @@ public class PlateAppearanceResult {
 
 	private final Map<PitchingResultType, Integer> pitchingResultMap = new HashMap<>();
 
-	public PlateAppearanceResult(Computer computer, User user) {
-		List<Integer> userNumberList = user.getNumberList();
+	public PlateAppearanceResult(final Computer computer, final User user) {
+		final List<Integer> userNumberList = user.getNumberList();
 		for (int i = 0; i < userNumberList.size(); i++) {
-			PitchingResultType pitchingResult = computer.checkNumber(userNumberList.get(i), i);
+			final PitchingResultType pitchingResult = computer.checkNumber(userNumberList.get(i), i);
 			this.pitchingResultMap.put(pitchingResult, count(pitchingResult) + 1);
 		}
 	}
 
-	public int count(PitchingResultType pitchingResultType) {
+	public int count(final PitchingResultType pitchingResultType) {
 		return pitchingResultMap.getOrDefault(pitchingResultType, 0);
 	}
 

@@ -1,9 +1,10 @@
 package baseball.player;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 
+import nextstep.utils.Randoms;
 import type.PitchingResultType;
 
 public class Computer extends Player {
@@ -11,36 +12,29 @@ public class Computer extends Player {
 	private static final int MIN_NUMBER = 1;
 	private static final int MAX_NUMBER = 9;
 
-	private final List<Integer> NUMBER_POOL = new ArrayList<>();
-
-	protected Computer(int numberSize) {
-		for (int i = MIN_NUMBER; i < MAX_NUMBER + 1; i++) {
-			NUMBER_POOL.add(i);
-		}
-
-		updateNumberList(generateRandomNumberList(numberSize));
+	protected Computer(final int numberSize) {
+		updateNumberList(generateRandomNumbers(numberSize));
 	}
 
-	private List<Integer> generateRandomNumberList(int numberSize) {
-		Collections.shuffle(NUMBER_POOL);
-		List<Integer> newNumberList = new ArrayList<>();
-		for (int i = 0; i < numberSize; i++) {
-			newNumberList.add(NUMBER_POOL.get(i));
+	private List<Integer> generateRandomNumbers(final int numberSize) {
+		final LinkedHashSet<Integer> newNumbers = new LinkedHashSet<>();
+		while (newNumbers.size() < numberSize) {
+			newNumbers.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
 		}
 
-		return newNumberList;
+		return new ArrayList<>(newNumbers);
 	}
 
-	public static Computer of(int numberSize) {
+	public static Computer of(final int numberSize) {
 		return new Computer(numberSize);
 	}
 
-	public PitchingResultType checkNumber(int number, int position) {
-		if (getNumberList().get(position) == number) {
+	public PitchingResultType checkNumber(final int number, final int position) {
+		if (getNumbers().get(position) == number) {
 			return PitchingResultType.STRIKE;
 		}
 
-		if (getNumberList().contains(number)) {
+		if (getNumbers().contains(number)) {
 			return PitchingResultType.BALL;
 		}
 
@@ -51,7 +45,7 @@ public class Computer extends Player {
 	 * 길이는 같지만, 다른 번호를 할당합니다.
 	 */
 	public void reset() {
-		int currentNumberSize = getNumberList().size();
-		updateNumberList(generateRandomNumberList(currentNumberSize));
+		final int currentNumberSize = getNumbers().size();
+		updateNumberList(generateRandomNumbers(currentNumberSize));
 	}
 }
