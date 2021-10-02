@@ -6,14 +6,14 @@ import java.util.Objects;
 
 public abstract class Player {
 
-	private List<Integer> numberList;
+	private List<Integer> numbers;
 
 	public void updateNumberList(final List<Integer> newNumberList) {
-		this.numberList = Collections.unmodifiableList(newNumberList);
+		this.numbers = Collections.unmodifiableList(newNumberList);
 	}
 
-	public List<Integer> getNumberList() {
-		return numberList;
+	public List<Integer> getNumbers() {
+		return numbers;
 	}
 
 	@Override
@@ -23,11 +23,11 @@ public abstract class Player {
 		if (!(o instanceof Player))
 			return false;
 		final Player player = (Player)o;
-		return Objects.equals(getNumberList(), player.getNumberList());
+		return Objects.equals(getNumbers(), player.getNumbers());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getNumberList());
+		return Objects.hash(getNumbers());
 	}
 }

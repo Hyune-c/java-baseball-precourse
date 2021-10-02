@@ -24,7 +24,7 @@ class ApplicationTest extends NSTest {
 			mockRandoms
 				.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 				.thenReturn(1, 3, 5);
-			running("246");
+			run("246");
 			verify("낫싱");
 		}
 	}
@@ -32,7 +32,8 @@ class ApplicationTest extends NSTest {
 	@Test
 	void 게임종료_후_재시작() {
 		try (final MockedStatic<Randoms> mockRandoms = mockStatic(Randoms.class)) {
-			mockRandoms.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+			mockRandoms
+				.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 				.thenReturn(7, 1, 3)
 				.thenReturn(5, 8, 9);
 			run("713", "1", "597", "589", "2");

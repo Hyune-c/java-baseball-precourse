@@ -21,6 +21,6 @@ public class User extends Player {
 	 * @return
 	 */
 	public boolean isValid() {
-		return (getNumberList().size() == Property.NUMBER_SIZE);
+		return (getNumbers().size() == Property.NUMBER_SIZE);
 	}
 }

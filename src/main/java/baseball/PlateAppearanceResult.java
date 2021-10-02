@@ -14,7 +14,7 @@ public class PlateAppearanceResult {
 	private final Map<PitchingResultType, Integer> pitchingResultMap = new HashMap<>();
 
 	public PlateAppearanceResult(final Computer computer, final User user) {
-		final List<Integer> userNumberList = user.getNumberList();
+		final List<Integer> userNumberList = user.getNumbers();
 		for (int i = 0; i < userNumberList.size(); i++) {
 			final PitchingResultType pitchingResult = computer.checkNumber(userNumberList.get(i), i);
 			this.pitchingResultMap.put(pitchingResult, count(pitchingResult) + 1);
