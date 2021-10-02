@@ -11,6 +11,7 @@ import org.junit.jupiter.api.RepeatedTest;
 
 import baseball.player.Computer;
 import baseball.player.User;
+import nextstep.utils.Randoms;
 import type.PitchingResultType;
 
 @DisplayName("타석 결과")
@@ -22,11 +23,10 @@ class PlateAppearanceResultTest {
 		// given
 		final int size = 3;
 		final Computer computer = Computer.of(size);
-		final Random random = new Random();
 		final List<Integer> inputList = Arrays.asList(
-			random.nextInt(9) + 1,
-			random.nextInt(9) + 1,
-			random.nextInt(9) + 1);
+			Randoms.pickNumberInRange(1, 9),
+			Randoms.pickNumberInRange(1, 9),
+			Randoms.pickNumberInRange(1, 9));
 		final User user = User.of(inputList);
 
 		// when
