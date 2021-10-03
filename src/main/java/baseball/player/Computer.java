@@ -20,6 +20,10 @@ public class Computer extends Player {
 		return new Computer(generateRandomNumbers(numberSize));
 	}
 
+	public static Computer of(final List<Integer> numbers) {
+		return new Computer(numbers);
+	}
+
 	public PitchingResultType checkNumber(final int number, final int position) {
 		if (numbers.get(position) == number) {
 			return PitchingResultType.STRIKE;
