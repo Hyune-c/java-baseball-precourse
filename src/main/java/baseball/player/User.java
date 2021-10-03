@@ -26,6 +26,6 @@ public class User extends Player {
 	 * @return
 	 */
 	private boolean createValidation() {
-		return (numbers.size() == Property.NUMBER_SIZE);
+		return (numbers.size() == Property.NUMBER_LENGTH);
 	}
 }

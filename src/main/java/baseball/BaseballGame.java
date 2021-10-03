@@ -9,7 +9,7 @@ import controller.InputController;
 
 public class BaseballGame {
 
-	private static final String PRINT_WIN_GAME = NUMBER_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 끝.";
+	private static final String PRINT_WIN_GAME = NUMBER_LENGTH + "개의 숫자를 모두 맞히셨습니다! 게임 끝.";
 
 	private final Computer computer;
 
@@ -37,7 +37,7 @@ public class BaseballGame {
 	 * 사용자의 입력으로 타석 결과를 반환합니다.
 	 */
 	private PlateAppearanceResult doBat() {
-		final User user = User.of(InputController.nextIntegerList(Property.NUMBER_SIZE));
+		final User user = User.of(InputController.nextIntegerList(Property.NUMBER_LENGTH));
 		return new PlateAppearanceResult(computer, user);
 	}
 

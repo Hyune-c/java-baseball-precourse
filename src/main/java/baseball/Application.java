@@ -11,7 +11,7 @@ public class Application {
 	public static void main(final String[] args) {
 		BaseballGame baseGame;
 		do {
-			baseGame = BaseballGame.of(Computer.of(NUMBER_SIZE));
+			baseGame = BaseballGame.of(Computer.of(NUMBER_LENGTH));
 			baseGame.doGame();
 			baseGame.afterGame();
 		} while (askRestart());

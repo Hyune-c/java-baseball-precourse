@@ -17,12 +17,12 @@ class ComputerTest {
 		// given
 
 		// when
-		final Computer computer = Computer.of(NUMBER_SIZE);
+		final Computer computer = Computer.of(NUMBER_LENGTH);
 
 		// then
 		final List<Integer> numbers = computer.getNumbers();
 
-		assertThat(numbers.size()).isEqualTo(NUMBER_SIZE);
+		assertThat(numbers.size()).isEqualTo(NUMBER_LENGTH);
 		assertThat(!numbers.get(0).equals(numbers.get(1))
 			&& !numbers.get(1).equals(numbers.get(2))).isTrue();
 	}

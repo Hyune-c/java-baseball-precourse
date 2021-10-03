@@ -26,7 +26,7 @@ class ParseUtilsTest {
 		// given
 
 		// when
-		final List<Integer> result = ParseUtils.parse(input, NUMBER_SIZE);
+		final List<Integer> result = ParseUtils.parse(input, NUMBER_LENGTH);
 
 		// then
 		assertThat(result.size()).isPositive();
@@ -44,7 +44,7 @@ class ParseUtilsTest {
 
 		// when
 		assertThatExceptionOfType(InputParseException.class)
-			.isThrownBy(() -> ParseUtils.parse(input, NUMBER_SIZE))
+			.isThrownBy(() -> ParseUtils.parse(input, NUMBER_LENGTH))
 			.withMessage(new InputParseException().getMessage());
 
 		// then
