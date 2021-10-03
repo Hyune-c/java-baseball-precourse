@@ -13,12 +13,12 @@ public class BaseballGame {
 
 	private final Computer computer;
 
-	public BaseballGame(final int numberSize) {
-		this.computer = Computer.of(numberSize);
+	private BaseballGame(final Computer computer) {
+		this.computer = computer;
 	}
 
-	public static BaseballGame of(final int numberSize) {
-		return new BaseballGame(numberSize);
+	public static BaseballGame of(final Computer computer) {
+		return new BaseballGame(computer);
 	}
 
 	/**
@@ -31,8 +31,6 @@ public class BaseballGame {
 			plateAppearanceResult = doBat();
 			System.out.println(plateAppearanceResult.message());
 		} while (!plateAppearanceResult.isAllStrike());
-
-		afterGame();
 	}
 
 	/**
@@ -43,7 +41,7 @@ public class BaseballGame {
 		return new PlateAppearanceResult(computer, user);
 	}
 
-	private void afterGame() {
+	public void afterGame() {
 		System.out.println(PRINT_WIN_GAME);
 	}
 }
