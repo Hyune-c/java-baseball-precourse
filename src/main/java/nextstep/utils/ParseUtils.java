@@ -5,6 +5,9 @@ import java.util.List;
 
 public class ParseUtils {
 
+	public ParseUtils() {
+	}
+
 	public static List<Integer> parse(final String input, final int size) {
 		final List<Integer> result = new ArrayList<>(parseToIntegerList(input));
 		if (result.size() != size) {

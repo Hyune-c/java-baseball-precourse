@@ -12,6 +12,9 @@ public class InputController {
 	private static final String INPUT_RETRY = "[ERROR] 다시 입력해주세요.";
 	private static final String INPUT_NUMBERS = "숫자를 입력해 주세요 : ";
 
+	private InputController() {
+	}
+
 	public static List<Integer> nextIntegerList(final int size) {
 		try {
 			System.out.print(INPUT_NUMBERS);
