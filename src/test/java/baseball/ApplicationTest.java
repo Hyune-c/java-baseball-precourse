@@ -24,8 +24,9 @@ class ApplicationTest extends NSTest {
 			mockRandoms
 				.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
 				.thenReturn(1, 3, 5);
-			run("246");
-			verify("낫싱");
+			// 애플리케이션이 3 strike 까지 무한 루프를 돌기 때문에 처리를 위해 테스트를 수정했습니다.
+			run("246", "135", "2");
+			verify("낫싱", "3스트라이크", "게임 끝");
 		}
 	}
 
