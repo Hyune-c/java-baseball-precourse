@@ -2,7 +2,7 @@ package controller;
 
 import java.util.List;
 
-import baseball.exception.InputParseException;
+import exception.InputParseException;
 import baseball.utils.ParseUtils;
 import config.Property;
 import nextstep.utils.Console;

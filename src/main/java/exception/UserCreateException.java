@@ -1,4 +1,4 @@
-package baseball.exception;
+package exception;
 
 public class UserCreateException extends IllegalArgumentException {
 

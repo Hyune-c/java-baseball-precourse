@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import baseball.exception.InputParseException;
+import exception.InputParseException;
 import baseball.utils.ParseUtils;
 
 @DisplayName("문자열 파싱")
