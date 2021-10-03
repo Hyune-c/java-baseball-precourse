@@ -9,7 +9,6 @@ import baseball.player.Computer;
 import baseball.player.User;
 import config.Property;
 import controller.InputController;
-import type.GameStatusType;
 
 public class BaseballGame {
 
@@ -19,13 +18,9 @@ public class BaseballGame {
 	private final Computer computer;
 	private final User user;
 
-	private GameStatusType gameStatusType;
-
 	public BaseballGame(final int numberSize) {
 		this.computer = Computer.of(numberSize);
 		this.user = User.of(new ArrayList<>());
-
-		this.gameStatusType = GameStatusType.RESTART;
 	}
 
 	public static BaseballGame of(final int numberSize) {
@@ -61,30 +56,5 @@ public class BaseballGame {
 
 	private void afterGame() {
 		System.out.println(PRINT_WIN_GAME);
-		gameStatusType = GameStatusType.END;
-	}
-
-	public void askRestart() {
-		int flag = 0;
-		do {
-			flag = InputController.nextGameStatusTypeFlag();
-		} while (!GameStatusType.isValidFlag(flag));
-
-		updateGameStatus(GameStatusType.findByFlag(flag));
-		afterAskRestart();
-	}
-
-	private void afterAskRestart() {
-		if (gameStatusType.equals(GameStatusType.RESTART)) {
-			computer.reset();
-		}
-	}
-
-	private void updateGameStatus(final GameStatusType newGameStatusType) {
-		gameStatusType = newGameStatusType;
-	}
-
-	public boolean isRestart() {
-		return gameStatusType.equals(GameStatusType.RESTART);
 	}
 }

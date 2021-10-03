@@ -13,13 +13,11 @@ public enum PitchingResultType {
 		this.description = description;
 	}
 
-	public String generateMessage(final int count) {
-		return (count == 0)
-			? ""
-			: count + this.getDescription() + " ";
-	}
+	public String message(final int count) {
+		if (count == 0) {
+			return "";
+		}
 
-	public String getDescription() {
-		return description;
+		return count + this.description + " ";
 	}
 }

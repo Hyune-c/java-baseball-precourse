@@ -1,5 +1,7 @@
 package baseball;
 
+import static type.PitchingResultType.*;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,15 +29,14 @@ public class PlateAppearanceResult {
 	}
 
 	public boolean isAllStrike() {
-		return (count(PitchingResultType.STRIKE) == 3);
+		return (count(STRIKE) == 3);
 	}
 
 	public String generateMessage() {
-		if (count(PitchingResultType.OUT) == 3) {
+		if (count(OUT) == 3) {
 			return NOTHING;
 		}
 
-		return PitchingResultType.STRIKE.generateMessage(count(PitchingResultType.STRIKE))
-			+ PitchingResultType.BALL.generateMessage(count(PitchingResultType.BALL));
+		return STRIKE.message(count(STRIKE)) + BALL.message(count(BALL));
 	}
 }
