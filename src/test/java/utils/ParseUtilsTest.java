@@ -10,7 +10,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import exception.InputParseException;
-import baseball.utils.ParseUtils;
 
 @DisplayName("문자열 파싱")
 class ParseUtilsTest {

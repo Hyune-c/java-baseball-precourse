@@ -22,8 +22,7 @@ public class BaseballGame {
 	}
 
 	/**
-	 * 1. doBat() 을 통해 타석 결과를 받습니다.
-	 * 2. 게임이 끝나면 afterGame() 을 통해 GameStatusType.END 로 업데이트 합니다.
+	 * doBat() 을 통해 타석 결과를 받습니다.
 	 */
 	public void doGame() {
 		PlateAppearanceResult plateAppearanceResult;
@@ -31,6 +30,8 @@ public class BaseballGame {
 			plateAppearanceResult = doBat();
 			System.out.println(plateAppearanceResult.message());
 		} while (!plateAppearanceResult.isAllStrike());
+
+		System.out.println(PRINT_WIN_GAME);
 	}
 
 	/**
@@ -38,10 +39,6 @@ public class BaseballGame {
 	 */
 	private PlateAppearanceResult doBat() {
 		final User user = User.of(InputController.nextIntegerList(Property.NUMBER_LENGTH));
-		return new PlateAppearanceResult(computer, user);
-	}
-
-	public void afterGame() {
-		System.out.println(PRINT_WIN_GAME);
+		return PlateAppearanceResult.of(computer, user);
 	}
 }

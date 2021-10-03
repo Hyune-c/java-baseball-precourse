@@ -16,12 +16,16 @@ public class PlateAppearanceResult {
 
 	private final Map<PitchingResultType, Integer> pitchingResultMap = new EnumMap<>(PitchingResultType.class);
 
-	public PlateAppearanceResult(final Computer computer, final User user) {
+	private PlateAppearanceResult(final Computer computer, final User user) {
 		final List<Integer> userNumberList = user.getNumbers();
 		for (int i = 0; i < userNumberList.size(); i++) {
 			final PitchingResultType pitchingResult = computer.checkNumber(userNumberList.get(i), i);
 			this.pitchingResultMap.put(pitchingResult, count(pitchingResult) + 1);
 		}
+	}
+
+	public static PlateAppearanceResult of(final Computer computer, final User user) {
+		return new PlateAppearanceResult(computer, user);
 	}
 
 	public int count(final PitchingResultType pitchingResultType) {

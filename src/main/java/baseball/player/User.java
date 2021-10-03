@@ -2,8 +2,8 @@ package baseball.player;
 
 import java.util.List;
 
-import exception.UserCreateException;
 import config.Property;
+import exception.UserCreateException;
 
 public class User extends Player {
 

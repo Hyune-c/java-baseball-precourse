@@ -30,7 +30,7 @@ class PlateAppearanceResultTest {
 		final User user = User.of(inputList);
 
 		// when
-		final PlateAppearanceResult plateAppearanceResult = new PlateAppearanceResult(computer, user);
+		final PlateAppearanceResult plateAppearanceResult = PlateAppearanceResult.of(computer, user);
 
 		// then
 		System.out.printf("### computer=%s\n", computer.getNumbers());
