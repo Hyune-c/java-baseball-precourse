@@ -1,0 +1,33 @@
+package controller;
+
+import java.util.List;
+
+import config.Property;
+import nextstep.utils.Console;
+import nextstep.utils.ParseUtils;
+
+public class InputController {
+
+	private static final String INPUT_RETRY_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
+	private static final String INPUT_RETRY = "[ERROR] 다시 입력해주세요.";
+
+	public static List<Integer> nextIntegerList(final String printString, final int size) {
+		try {
+			System.out.print(printString);
+			return ParseUtils.parse(Console.readLine(), size);
+		} catch (final IllegalArgumentException ex) {
+			System.out.println(INPUT_RETRY);
+			return nextIntegerList(printString, size);
+		}
+	}
+
+	public static int nextGameStatusTypeFlag() {
+		try {
+			System.out.println(INPUT_RETRY_GAME);
+			return ParseUtils.parse(Console.readLine(), Property.TYPE_FLAG_LENGTH).get(0);
+		} catch (final IllegalArgumentException ex) {
+			System.out.println(INPUT_RETRY);
+			return nextGameStatusTypeFlag();
+		}
+	}
+}

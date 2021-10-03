@@ -6,10 +6,11 @@ import java.util.Map;
 
 import baseball.player.Computer;
 import baseball.player.User;
-import type.Message;
 import type.PitchingResultType;
 
 public class PlateAppearanceResult {
+
+	private static final String NOTHING = "낫싱";
 
 	private final Map<PitchingResultType, Integer> pitchingResultMap = new HashMap<>();
 
@@ -31,7 +32,7 @@ public class PlateAppearanceResult {
 
 	public String generateMessage() {
 		if (count(PitchingResultType.OUT) == 3) {
-			return Message.NOTING.toString();
+			return NOTHING;
 		}
 
 		return PitchingResultType.STRIKE.generateMessage(count(PitchingResultType.STRIKE))

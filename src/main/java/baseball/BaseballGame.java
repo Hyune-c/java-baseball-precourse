@@ -1,19 +1,20 @@
 package baseball;
 
+import static config.Property.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import baseball.player.Computer;
 import baseball.player.User;
 import config.Property;
-import input.InputService;
-import input.ParseService;
+import controller.InputController;
 import type.GameStatusType;
-import type.Message;
 
 public class BaseballGame {
 
-	private final InputService inputService;
+	private static final String INPUT_NUMBERS = "숫자를 입력해 주세요 : ";
+	private static final String PRINT_WIN_GAME = NUMBER_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 끝.";
 
 	private final Computer computer;
 	private final User user;
@@ -21,12 +22,14 @@ public class BaseballGame {
 	private GameStatusType gameStatusType;
 
 	public BaseballGame(final int numberSize) {
-		this.inputService = new InputService(new ParseService());
-
 		this.computer = Computer.of(numberSize);
 		this.user = User.of(new ArrayList<>());
 
 		this.gameStatusType = GameStatusType.RESTART;
+	}
+
+	public static BaseballGame of(final int numberSize) {
+		return new BaseballGame(numberSize);
 	}
 
 	/**
@@ -48,8 +51,8 @@ public class BaseballGame {
 	 */
 	private PlateAppearanceResult doBat() {
 		do {
-			final List<Integer> inputNumberList = inputService.nextIntegerList(
-				Message.ENTER_NUMBER.toString(), Property.NUMBER_SIZE);
+			final List<Integer> inputNumberList = InputController.nextIntegerList(
+				INPUT_NUMBERS, Property.NUMBER_SIZE);
 			user.updateNumberList(inputNumberList);
 		} while (!user.isValid());
 
@@ -57,14 +60,14 @@ public class BaseballGame {
 	}
 
 	private void afterGame() {
-		System.out.println(Message.WIN_GAME);
+		System.out.println(PRINT_WIN_GAME);
 		gameStatusType = GameStatusType.END;
 	}
 
 	public void askRestart() {
 		int flag = 0;
 		do {
-			flag = inputService.nextGameStatusTypeFlag(Message.ENTER_RETRY_GAME.toString());
+			flag = InputController.nextGameStatusTypeFlag();
 		} while (!GameStatusType.isValidFlag(flag));
 
 		updateGameStatus(GameStatusType.findByFlag(flag));

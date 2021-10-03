@@ -9,12 +9,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import input.ParseService;
+import nextstep.utils.ParseUtils;
 
 @DisplayName("문자열 파싱")
-class ParseServiceTest {
+class ParseUtilsTest {
 
-	private final ParseService parseService = new ParseService();
+	private final ParseUtils parseUtils = new ParseUtils();
 
 	public static String[] possibleParsedString() {
 		return new String[] {"123", "456", "150"};
@@ -28,7 +28,7 @@ class ParseServiceTest {
 		final int size = 3;
 
 		// when
-		final List<Integer> result = parseService.parse(input, size);
+		final List<Integer> result = parseUtils.parse(input, size);
 
 		// then
 		assertThat(result.size()).isGreaterThan(0);
@@ -46,7 +46,7 @@ class ParseServiceTest {
 		final int size = 3;
 
 		// when
-		assertThrows(NumberFormatException.class, () -> parseService.parse(input, size));
+		assertThrows(NumberFormatException.class, () -> parseUtils.parse(input, size));
 
 		// then
 	}
@@ -63,7 +63,7 @@ class ParseServiceTest {
 		final int size = 3;
 
 		// when
-		assertThrows(IllegalArgumentException.class, () -> parseService.parse(input, size));
+		assertThrows(IllegalArgumentException.class, () -> parseUtils.parse(input, size));
 
 		// then
 	}
