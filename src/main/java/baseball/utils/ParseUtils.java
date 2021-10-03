@@ -1,11 +1,11 @@
-package nextstep.utils;
+package baseball.utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParseUtils {
 
-	public ParseUtils() {
+	private ParseUtils() {
 	}
 
 	public static List<Integer> parse(final String input, final int size) {

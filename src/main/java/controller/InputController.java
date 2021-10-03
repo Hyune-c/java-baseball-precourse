@@ -2,9 +2,9 @@ package controller;
 
 import java.util.List;
 
+import baseball.utils.ParseUtils;
 import config.Property;
 import nextstep.utils.Console;
-import nextstep.utils.ParseUtils;
 
 public class InputController {
 

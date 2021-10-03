@@ -1,4 +1,4 @@
-package baseball;
+package utils;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,12 +9,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import nextstep.utils.ParseUtils;
+import baseball.utils.ParseUtils;
 
 @DisplayName("문자열 파싱")
 class ParseUtilsTest {
-
-	private final ParseUtils parseUtils = new ParseUtils();
 
 	public static String[] possibleParsedString() {
 		return new String[] {"123", "456", "150"};
@@ -28,10 +26,10 @@ class ParseUtilsTest {
 		final int size = 3;
 
 		// when
-		final List<Integer> result = parseUtils.parse(input, size);
+		final List<Integer> result = ParseUtils.parse(input, size);
 
 		// then
-		assertThat(result.size()).isGreaterThan(0);
+		assertThat(result.size()).isPositive();
 	}
 
 	public static String[] impossibleParsedString() {
@@ -46,7 +44,7 @@ class ParseUtilsTest {
 		final int size = 3;
 
 		// when
-		assertThrows(NumberFormatException.class, () -> parseUtils.parse(input, size));
+		assertThrows(NumberFormatException.class, () -> ParseUtils.parse(input, size));
 
 		// then
 	}
@@ -63,7 +61,7 @@ class ParseUtilsTest {
 		final int size = 3;
 
 		// when
-		assertThrows(IllegalArgumentException.class, () -> parseUtils.parse(input, size));
+		assertThrows(IllegalArgumentException.class, () -> ParseUtils.parse(input, size));
 
 		// then
 	}
