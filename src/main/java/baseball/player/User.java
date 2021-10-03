@@ -2,6 +2,7 @@ package baseball.player;
 
 import java.util.List;
 
+import baseball.exception.UserCreateException;
 import config.Property;
 
 public class User extends Player {
@@ -10,7 +11,7 @@ public class User extends Player {
 		super(numbers);
 
 		if (!createValidation()) {
-			throw new IllegalArgumentException();
+			throw new UserCreateException();
 		}
 	}
 

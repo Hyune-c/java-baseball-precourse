@@ -1,5 +1,6 @@
 package baseball.player;
 
+import static config.Property.*;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
@@ -10,21 +11,19 @@ import org.junit.jupiter.api.RepeatedTest;
 @DisplayName("컴퓨터의 수")
 class ComputerTest {
 
-	@DisplayName("[성공] 생성")
+	@DisplayName("생성")
 	@RepeatedTest(10)
-	void success_create() {
+	void create() {
 		// given
-		final int size = 3;
 
 		// when
-		final Computer computer = Computer.of(size);
+		final Computer computer = Computer.of(NUMBER_SIZE);
 
 		// then
 		final List<Integer> numbers = computer.getNumbers();
-		assertThat(numbers.size()).isEqualTo(size);
+
+		assertThat(numbers.size()).isEqualTo(NUMBER_SIZE);
 		assertThat(!numbers.get(0).equals(numbers.get(1))
 			&& !numbers.get(1).equals(numbers.get(2))).isTrue();
-
-		System.out.printf("### %d, %d, %d%n", numbers.get(0), numbers.get(1), numbers.get(2));
 	}
 }
