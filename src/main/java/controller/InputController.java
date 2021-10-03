@@ -2,10 +2,10 @@ package controller;
 
 import java.util.List;
 
-import exception.InputParseException;
-import baseball.utils.ParseUtils;
 import config.Property;
+import exception.InputParseException;
 import nextstep.utils.Console;
+import utils.ParseUtils;
 
 public class InputController {
 
@@ -15,14 +15,14 @@ public class InputController {
 	private InputController() {
 	}
 
-	public static List<Integer> nextIntegerList(final int length) {
+	public static List<Integer> nextIntegers(final int length) {
 		System.out.print(INPUT_NUMBERS);
 
 		try {
 			return ParseUtils.parse(Console.readLine(), length);
 		} catch (final InputParseException ex) {
 			System.out.println(ex.getMessage());
-			return nextIntegerList(length);
+			return nextIntegers(length);
 		}
 	}
 

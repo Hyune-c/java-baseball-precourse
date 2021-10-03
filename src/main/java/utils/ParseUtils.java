@@ -1,4 +1,4 @@
-package baseball.utils;
+package utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,13 +14,13 @@ public class ParseUtils {
 
 	public static List<Integer> parse(final String input, final int length) {
 		if (input.length() == length) {
-			return new ArrayList<>(parseToIntegerList(input));
+			return new ArrayList<>(parseToIntegers(input));
 		}
 
 		throw new InputParseException();
 	}
 
-	private static List<Integer> parseToIntegerList(final String input) {
+	private static List<Integer> parseToIntegers(final String input) {
 		try {
 			return Arrays.stream(input.split(""))
 				.map(Integer::parseInt)

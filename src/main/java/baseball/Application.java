@@ -4,6 +4,7 @@ import static config.Property.*;
 
 import baseball.player.Computer;
 import controller.InputController;
+import exception.InputParseException;
 import type.GameStatusType;
 
 public class Application {
@@ -13,7 +14,6 @@ public class Application {
 		do {
 			baseGame = BaseballGame.of(Computer.of(NUMBER_LENGTH));
 			baseGame.doGame();
-			baseGame.afterGame();
 		} while (askRestart());
 	}
 
@@ -22,6 +22,7 @@ public class Application {
 			final int flag = InputController.nextGameStatusTypeFlag();
 			return GameStatusType.findByFlag(flag).isRestart();
 		} catch (final IllegalArgumentException ex) {
+			System.out.println(new InputParseException().getMessage());
 			return askRestart();
 		}
 	}
