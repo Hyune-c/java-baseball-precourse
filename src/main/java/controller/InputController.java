@@ -10,14 +10,15 @@ public class InputController {
 
 	private static final String INPUT_RETRY_GAME = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 	private static final String INPUT_RETRY = "[ERROR] 다시 입력해주세요.";
+	private static final String INPUT_NUMBERS = "숫자를 입력해 주세요 : ";
 
-	public static List<Integer> nextIntegerList(final String printString, final int size) {
+	public static List<Integer> nextIntegerList(final int size) {
 		try {
-			System.out.print(printString);
+			System.out.print(INPUT_NUMBERS);
 			return ParseUtils.parse(Console.readLine(), size);
 		} catch (final IllegalArgumentException ex) {
 			System.out.println(INPUT_RETRY);
-			return nextIntegerList(printString, size);
+			return nextIntegerList(size);
 		}
 	}
 

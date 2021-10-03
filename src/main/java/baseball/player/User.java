@@ -6,12 +6,16 @@ import config.Property;
 
 public class User extends Player {
 
-	protected User(final List<Integer> numberList) {
-		updateNumberList(numberList);
+	protected User(final List<Integer> numbers) {
+		super(numbers);
+
+		if (!createValidation()) {
+			throw new IllegalArgumentException();
+		}
 	}
 
-	public static User of(final List<Integer> numberList) {
-		return new User(numberList);
+	public static User of(final List<Integer> numbers) {
+		return new User(numbers);
 	}
 
 	/**
@@ -20,7 +24,7 @@ public class User extends Player {
 	 *
 	 * @return
 	 */
-	public boolean isValid() {
-		return (getNumbers().size() == Property.NUMBER_SIZE);
+	private boolean createValidation() {
+		return (numbers.size() == Property.NUMBER_SIZE);
 	}
 }

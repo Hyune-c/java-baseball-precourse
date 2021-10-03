@@ -2,9 +2,6 @@ package baseball;
 
 import static config.Property.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import baseball.player.Computer;
 import baseball.player.User;
 import config.Property;
@@ -12,15 +9,12 @@ import controller.InputController;
 
 public class BaseballGame {
 
-	private static final String INPUT_NUMBERS = "숫자를 입력해 주세요 : ";
 	private static final String PRINT_WIN_GAME = NUMBER_SIZE + "개의 숫자를 모두 맞히셨습니다! 게임 끝.";
 
 	private final Computer computer;
-	private final User user;
 
 	public BaseballGame(final int numberSize) {
 		this.computer = Computer.of(numberSize);
-		this.user = User.of(new ArrayList<>());
 	}
 
 	public static BaseballGame of(final int numberSize) {
@@ -35,7 +29,7 @@ public class BaseballGame {
 		PlateAppearanceResult plateAppearanceResult;
 		do {
 			plateAppearanceResult = doBat();
-			System.out.println(plateAppearanceResult.generateMessage());
+			System.out.println(plateAppearanceResult.message());
 		} while (!plateAppearanceResult.isAllStrike());
 
 		afterGame();
@@ -45,12 +39,7 @@ public class BaseballGame {
 	 * 사용자의 입력으로 타석 결과를 반환합니다.
 	 */
 	private PlateAppearanceResult doBat() {
-		do {
-			final List<Integer> inputNumberList = InputController.nextIntegerList(
-				INPUT_NUMBERS, Property.NUMBER_SIZE);
-			user.updateNumberList(inputNumberList);
-		} while (!user.isValid());
-
+		final User user = User.of(InputController.nextIntegerList(Property.NUMBER_SIZE));
 		return new PlateAppearanceResult(computer, user);
 	}
 

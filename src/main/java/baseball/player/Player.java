@@ -1,15 +1,14 @@
 package baseball.player;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 public abstract class Player {
 
-	private List<Integer> numbers;
+	protected final List<Integer> numbers;
 
-	public void updateNumberList(final List<Integer> newNumberList) {
-		this.numbers = Collections.unmodifiableList(newNumberList);
+	protected Player(final List<Integer> numbers) {
+		this.numbers = numbers;
 	}
 
 	public List<Integer> getNumbers() {
@@ -23,11 +22,11 @@ public abstract class Player {
 		if (!(o instanceof Player))
 			return false;
 		final Player player = (Player)o;
-		return Objects.equals(getNumbers(), player.getNumbers());
+		return Objects.equals(numbers, player.numbers);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getNumbers());
+		return Objects.hash(numbers);
 	}
 }

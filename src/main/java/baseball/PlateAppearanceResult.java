@@ -2,7 +2,7 @@ package baseball;
 
 import static type.PitchingResultType.*;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +14,7 @@ public class PlateAppearanceResult {
 
 	private static final String NOTHING = "낫싱";
 
-	private final Map<PitchingResultType, Integer> pitchingResultMap = new HashMap<>();
+	private final Map<PitchingResultType, Integer> pitchingResultMap = new EnumMap<>(PitchingResultType.class);
 
 	public PlateAppearanceResult(final Computer computer, final User user) {
 		final List<Integer> userNumberList = user.getNumbers();
@@ -32,7 +32,7 @@ public class PlateAppearanceResult {
 		return (count(STRIKE) == 3);
 	}
 
-	public String generateMessage() {
+	public String message() {
 		if (count(OUT) == 3) {
 			return NOTHING;
 		}

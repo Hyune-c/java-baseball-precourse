@@ -12,40 +12,32 @@ public class Computer extends Player {
 	private static final int MIN_NUMBER = 1;
 	private static final int MAX_NUMBER = 9;
 
-	protected Computer(final int numberSize) {
-		updateNumberList(generateRandomNumbers(numberSize));
-	}
-
-	private List<Integer> generateRandomNumbers(final int numberSize) {
-		final LinkedHashSet<Integer> newNumbers = new LinkedHashSet<>();
-		while (newNumbers.size() < numberSize) {
-			newNumbers.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
-		}
-
-		return new ArrayList<>(newNumbers);
+	protected Computer(final List<Integer> numbers) {
+		super(numbers);
 	}
 
 	public static Computer of(final int numberSize) {
-		return new Computer(numberSize);
+		return new Computer(generateRandomNumbers(numberSize));
 	}
 
 	public PitchingResultType checkNumber(final int number, final int position) {
-		if (getNumbers().get(position) == number) {
+		if (numbers.get(position) == number) {
 			return PitchingResultType.STRIKE;
 		}
 
-		if (getNumbers().contains(number)) {
+		if (numbers.contains(number)) {
 			return PitchingResultType.BALL;
 		}
 
 		return PitchingResultType.OUT;
 	}
 
-	/**
-	 * 길이는 같지만, 다른 번호를 할당합니다.
-	 */
-	public void reset() {
-		final int currentNumberSize = getNumbers().size();
-		updateNumberList(generateRandomNumbers(currentNumberSize));
+	private static List<Integer> generateRandomNumbers(final int numberSize) {
+		final LinkedHashSet<Integer> newNumbers = new LinkedHashSet<>();
+		while (newNumbers.size() < numberSize) {
+			newNumbers.add(Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER));
+		}
+
+		return new ArrayList<>(newNumbers);
 	}
 }
