@@ -11,7 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import exception.UserCreateException;
+import exception.PlayerCreateException;
 
 @DisplayName("유저의 수")
 class UserTest {
@@ -38,7 +38,8 @@ class UserTest {
 
 	public static Stream<Arguments> create_invalid() {
 		return Stream.of(
-			Arguments.of(Arrays.asList(7, 8))
+			Arguments.of(Arrays.asList(7, 8)),
+			Arguments.of(Arrays.asList(0, 1, 2))
 		);
 	}
 
@@ -49,7 +50,7 @@ class UserTest {
 		// given
 
 		// when
-		assertThatExceptionOfType(UserCreateException.class)
+		assertThatExceptionOfType(PlayerCreateException.class)
 			.isThrownBy(() -> User.of(input));
 
 		// then

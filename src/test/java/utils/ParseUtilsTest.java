@@ -18,7 +18,7 @@ class ParseUtilsTest {
 		return new String[] {"123", "456", "150"};
 	}
 
-	@DisplayName("정의된 길이로 parse")
+	@DisplayName("입력 문자열 parse")
 	@ParameterizedTest
 	@MethodSource("possibleParsedString")
 	void parse(final String input) {
@@ -35,7 +35,7 @@ class ParseUtilsTest {
 		return new String[] {"", "   ", "-10", "hello", "java", "1", "12", "5555", "1234567"};
 	}
 
-	@DisplayName("정의된 길이로 parse - 유효하지 않은 초기 값")
+	@DisplayName("입렵 문자열 parse - 유효하지 않은 초기 값")
 	@ParameterizedTest
 	@MethodSource
 	void parse_invalid(final String input) {

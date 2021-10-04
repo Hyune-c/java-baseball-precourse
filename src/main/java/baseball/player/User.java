@@ -3,16 +3,14 @@ package baseball.player;
 import java.util.List;
 
 import config.Property;
-import exception.UserCreateException;
+import exception.PlayerCreateException;
 
 public class User extends Player {
 
 	protected User(final List<Integer> numbers) {
 		super(numbers);
 
-		if (!createValidation()) {
-			throw new UserCreateException();
-		}
+		createValidation();
 	}
 
 	public static User of(final List<Integer> numbers) {
@@ -25,7 +23,9 @@ public class User extends Player {
 	 *
 	 * @return
 	 */
-	private boolean createValidation() {
-		return (numbers.size() == Property.NUMBER_LENGTH);
+	private void createValidation() {
+		if (numbers.size() != Property.NUMBER_LENGTH) {
+			throw new PlayerCreateException();
+		}
 	}
 }

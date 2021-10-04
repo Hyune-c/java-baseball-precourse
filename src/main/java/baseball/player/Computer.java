@@ -9,9 +9,6 @@ import type.PitchingResultType;
 
 public class Computer extends Player {
 
-	private static final int MIN_NUMBER = 1;
-	private static final int MAX_NUMBER = 9;
-
 	protected Computer(final List<Integer> numbers) {
 		super(numbers);
 	}
